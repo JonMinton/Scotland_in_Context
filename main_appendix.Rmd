@@ -1,0 +1,24 @@
+---
+title: "Scotland in Context: Supplementary web appendix"
+output: html_notebook
+---
+
+# Introduction
+
+The purpose of this repository is to store supplementary material for the article 'Visualising and quantifying 'excess deaths' in Scotland compared with the rest of the UK and the rest of Western Europe'. Supplementary material includes both web appendices for explaining some of the methods and procedures used in more detail than the word limit of the article allows; and also supplementary results which complement those presented in the paper, and illustrate some of the broader potential applications of the methods used in the paper to other forms of health data comparison. 
+
+# Data used 
+
+The source for the data used in the paper is the [Human Mortality Database](http://www.mortality.org/) (HMD), and in particular the zipped data files for all countries, available from [this link](http://www.mortality.org/hmd/zip/all_hmd/hmd_countries.zip). A [brief summary document](http://www.mortality.org/Public/Docs/MP-Summary.pdf) describing the methods protocol used within the HMD, and the [complete methods protocol](http://www.mortality.org/Public/Docs/MethodsProtocol.pdf), are available on the HMD website and via the links contained in this document. 
+
+# Data Extraction 
+
+The HMD data from the zipped file above were unzipped and loaded into a specific file location, and population, death counts, and exposure counts were harvested and combined into a single file using the script [reharvest_hmd.R](scripts/reharvest_hmd.R). This creates a file called [new_counts.csv](data/tidy/new_counts.csv), which is then used in all subsequent analyses. The broader principles and ideas behind this pre-processing step are described in the HMD technical report [Merging, exploring, and batch processing data from the Human Fertility Database and Human Mortality Database ](https://www.google.co.uk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwj9xdKtyPPQAhUrK8AKHTSDB0sQFggtMAE&url=http%3A%2F%2Fwww.demogr.mpg.de%2Fpapers%2Ftechnicalreports%2Ftr-2015-001.pdf&usg=AFQjCNG3IUxHNVRUSKgRSwGRDE5oyqEuHQ), although the script above uses the [purrr package](https://cran.r-project.org/web/packages/purrr/index.html) rather than the [plyr](https://cran.r-project.org/web/packages/plyr/index.html) package used previously. 
+
+# Production of figures 
+
+The figures used in the paper are produced in using the [new_counts.csv](data/tidy/new_counts.csv) file produced previously using the script [final_figures_for_scot_in_context.R](scripts/final_figures_for_scot_in_context.R). By substituting the `png` function for the `tiff` function, images of `tiff` file type, as submitted to the journal, can be produced instead of `.png` file type, although these files have much larger file size. The resulting figures are available in the [final_figures](figures/final_figures/) directory of this repository. 
+
+# Production of lifetables 
+
+The estimates of 'excess deaths' by different ages, for different groups defined by period or birth cohort, associated with living in Scotland compared with neighbouring countries, are produced using the script [produce_exposure_based_lifetables](scripts/produce_exposure_based_lifetables.R), available in this repository. This involves producing survivorship functions `lx` for different groups based on estimated mortality rates, `qx`, between ages `x` and `x+1` years given the central rates of mortality `mx` produced using death count and exposure count values from the HMD. The formulae used to produce `qx` are detailed on pages 38 and 39 of [the HMD methods protocol](http://www.mortality.org/Public/Docs/MethodsProtocol.pdf).

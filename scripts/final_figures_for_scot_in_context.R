@@ -92,7 +92,7 @@ smooth_fn <- function(DTA, SMOOTH_PAR = 1.3){
 #
 
 # Figure 1: SCP of Scotland, 1900-2010, less smoothing --------------------
-png(filename="figures/scotland_in_context/final_figures/figure_01_scp_ scotland_1900_2010_iso.png", 
+png(filename="figures/final_figures/figure_01_scp_ scotland_1900_2010_iso.png", 
     width=40, height=25, res=300, units="cm"
 )
 
@@ -365,7 +365,7 @@ comparisons <- dif_scot_rest_UK %>%
 
 
 
-png(filename="figures/scotland_in_context/final_figures/figure_02_clp_scot_uk_we.png", 
+png(filename="figures/final_figures/figure_02_clp_scot_uk_we.png", 
     width=30, height=30, res=300, units="cm"
 )
 
@@ -406,7 +406,7 @@ comparisons %>%
   dev.off()
   
 # Produce 'plain' version of above for adding annotations to  
-png(filename="figures/scotland_in_context/final_figures/figure_02a_clp_scot_uk_we_plain.png", 
+png(filename="figures/final_figures/figure_02a_clp_scot_uk_we_plain.png", 
       width=30, height=30, res=300, units="cm"
   )
   
@@ -550,7 +550,7 @@ region_scot_difs <- dta_scot %>%
 
 
 
-png(filename="figures/scotland_in_context/final_figures/figure_03_clp_scot_against_euro_regions.png", 
+png(filename="figures/final_figures/figure_03_clp_scot_against_euro_regions.png", 
     width=30, height=30, res=300, units="cm"
 )
 
@@ -709,7 +709,7 @@ comparisons <- dif_scot_enw %>%
 
 
 
-png(filename="figures/scotland_in_context/final_figures/figure_A01_clp_scot_enw_nir.png", 
+png(filename="figures/final_figures/figure_A01_clp_scot_enw_nir.png", 
     width=30, height=30, res=300, units="cm"
 )
 
@@ -967,7 +967,7 @@ gather(key = "comparison", value = "dif_logs", -year, -age, -sex)
 
 
 
-png(filename="figures/scotland_in_context/final_figures/figure_A02_clp_enw_uk_we.png", 
+png(filename="figures/final_figures/figure_A02_clp_enw_uk_we.png", 
     width=45, height=30, res=300, units="cm"
 )
 
